@@ -1,0 +1,1 @@
+Swift에서 Decodable은 JSON → 구조체로 변환(디코딩) 할 수 있게 해주는 프로토콜
