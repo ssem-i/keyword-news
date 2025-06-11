@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A6F50A8F2DFA497300E6223A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F50A8E2DFA497300E6223A /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A6E698162DF99D8C00371909 /* KeyNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6F50A8E2DFA497300E6223A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +50,7 @@
 		A6E6980D2DF99D8C00371909 = {
 			isa = PBXGroup;
 			children = (
+				A6F50A8E2DFA497300E6223A /* ViewController.swift */,
 				A6E698182DF99D8C00371909 /* KeyNews */,
 				A6E698172DF99D8C00371909 /* Products */,
 			);
@@ -132,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F50A8F2DFA497300E6223A /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,72 +2,34 @@ import UIKit
 import Foundation
 
 class ViewController: UIViewController {
-
     
     @IBOutlet weak var newsStackView: UIStackView!
     @IBOutlet weak var newsScrollView: UIScrollView!
-    
+    @IBOutlet weak var keywordsScrollView: UIScrollView!
     @IBOutlet weak var keywordsStackView: UIStackView!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
     var myId: String?
     var mySecret: String?
-    var keywords: [String] = ["미래에셋"]
+    var keywords: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadDate()
         loadAPIKeys()
         setupStackViewConstraints()
-        fetchNews(keyword: keywords[0]) { [weak self] newsItems in
-                DispatchQueue.main.async {
-                    self?.showNews(newsItems)
-                    
-                }
-            }
-        /*
-        fetchNews(keyword: keywords[0]) { [weak self] newsItems in
-                DispatchQueue.main.async {
-                    for item in newsItems {
-                        let title = UILabel()
-                        title.text = item.title.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
-                            .replacingOccurrences(of: "\n", with: " ")
-                            .htmlDecoded  // html 태그 제거
-                        title.numberOfLines = 1 // 표시할 줄 수
-                        title.font = UIFont.systemFont(ofSize: 16)  // 글자 크기
-                        
-                        
-                        let description = UILabel()
-                        description.text = item.description.htmlDecoded
-                        description.numberOfLines = 3
-                        description.font = UIFont.systemFont(ofSize: 13)
-                        
-                        let container = UIStackView()
-                        container.axis = .vertical
-                        container.spacing = 5
-                        container.addArrangedSubview(title)
-                        container.addArrangedSubview(description)
-                        title.backgroundColor = .red.withAlphaComponent(0.3)
-                        description.backgroundColor = .blue.withAlphaComponent(0.3)
-                    
-                        container.heightAnchor.constraint(equalToConstant: 100).isActive = true
-                        self?.newsStackView.spacing = 15
-                        self?.newsStackView.addArrangedSubview(container)
-                    }
-                }
-            }
-        
-        newsStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            // 스택뷰를 스크롤뷰의 contentLayoutGuide에 꽉 차게 연결
-            newsStackView.topAnchor.constraint(equalTo: newsScrollView.contentLayoutGuide.topAnchor),
-            newsStackView.bottomAnchor.constraint(equalTo: newsScrollView.contentLayoutGuide.bottomAnchor),
-            newsStackView.leadingAnchor.constraint(equalTo: newsScrollView.contentLayoutGuide.leadingAnchor),
-            newsStackView.trailingAnchor.constraint(equalTo: newsScrollView.contentLayoutGuide.trailingAnchor),
-
-            // 스택뷰의 너비를 스크롤뷰 프레임과 동일하게 (가로 스크롤 방지)
-            newsStackView.widthAnchor.constraint(equalTo: newsScrollView.frameLayoutGuide.widthAnchor)
-        ])
-         */
+        setupKeywordStackViewConstraints()
     }
-
+    
+    func loadDate(){
+           let formatter = DateFormatter()
+           formatter.locale = Locale(identifier: "ko_KR")
+           formatter.dateFormat = "yyyy년 M월 d일 EEEE"
+           
+           let today = Date()
+           dateLabel.text = formatter.string(from: today)
+    }
     func loadAPIKeys(){
         if let url = Bundle.main.url(forResource: "Property List", withExtension: "plist"),
            let data = try? Data(contentsOf: url),
@@ -79,7 +41,6 @@ class ViewController: UIViewController {
         }
     }
 
-    
     struct NewsItem : Decodable {
         let title: String
         let link : String
@@ -118,6 +79,24 @@ class ViewController: UIViewController {
             newsStackView.leadingAnchor.constraint(equalTo: newsScrollView.contentLayoutGuide.leadingAnchor),
             newsStackView.trailingAnchor.constraint(equalTo: newsScrollView.contentLayoutGuide.trailingAnchor),
             newsStackView.widthAnchor.constraint(equalTo: newsScrollView.frameLayoutGuide.widthAnchor)
+        ])
+    }
+    
+    func setupKeywordStackViewConstraints(){
+        keywordsStackView.translatesAutoresizingMaskIntoConstraints = false
+        keywordsStackView.axis = .horizontal
+        keywordsStackView.alignment = .center       // 또는 .fill
+        keywordsStackView.distribution = .fill   //.equalSpacing   // 또는 .fillProportionally
+        keywordsStackView.spacing = 10
+        NSLayoutConstraint.activate([
+            keywordsStackView.topAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.topAnchor),
+            keywordsStackView.bottomAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.bottomAnchor),
+            keywordsStackView.leadingAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.leadingAnchor),
+            keywordsStackView.trailingAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.trailingAnchor),
+            
+            
+            keywordsStackView.heightAnchor.constraint(equalTo: keywordsScrollView.frameLayoutGuide.heightAnchor)
+            
         ])
     }
 
@@ -166,13 +145,12 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func addKeywordButtonTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "키워드 추가", message: "뉴스 키워드를 입력하세요", preferredStyle: .alert)
-        
+        let alert = UIAlertController(title: "키워드 추가",
+        message: "뉴스 키워드를 입력하세요", preferredStyle: .alert)
         // 텍스트필드 추가
         alert.addTextField { textField in
-            textField.placeholder = "예: 삼성, 현대건설"
+            textField.placeholder = "예: 현대건설"
         }
-        
         // 확인 버튼
         let addAction = UIAlertAction(title: "추가", style: .default) { [weak self] _ in
             guard let keyword = alert.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -191,10 +169,20 @@ class ViewController: UIViewController {
     }
     
     func addKeywordButton(title: String) {
-        let button = UIButton(type: .system)
-        button.setTitle(title, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        button.addTarget(self, action: #selector(keywordTapped(_:)), for: .touchUpInside)
+        var config = UIButton.Configuration.filled()
+            config.title = title
+            config.baseBackgroundColor = .systemBlue
+            config.baseForegroundColor = .white
+            config.cornerStyle = .capsule
+            config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12) // 내부 여백
+            
+            let button = UIButton(configuration: config)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        button.setContentHuggingPriority(.required, for: .horizontal)
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
+        
+            button.addTarget(self, action: #selector(keywordTapped(_:)), for: .touchUpInside)
+       
         keywordsStackView.addArrangedSubview(button)
     }
     
