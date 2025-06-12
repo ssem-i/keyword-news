@@ -8,41 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Total News Controller-->
-        <scene sceneID="bnx-kJ-UcQ">
-            <objects>
-                <viewController id="xMl-Bl-zX4" customClass="TotalNewsController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HsE-Pj-JZ8">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ck-Ni-afj">
-                                <rect key="frame" x="0.0" y="158" width="393" height="694"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O3J-4n-X0K">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="694"/>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="VYa-dg-QAN" firstAttribute="bottom" secondItem="O3J-4n-X0K" secondAttribute="bottom" id="5gS-aM-fem"/>
-                                    <constraint firstItem="O3J-4n-X0K" firstAttribute="leading" secondItem="VYa-dg-QAN" secondAttribute="leading" id="Jpf-rs-zVd"/>
-                                    <constraint firstItem="VYa-dg-QAN" firstAttribute="trailing" secondItem="O3J-4n-X0K" secondAttribute="trailing" id="gcU-77-cQy"/>
-                                    <constraint firstItem="O3J-4n-X0K" firstAttribute="top" secondItem="VYa-dg-QAN" secondAttribute="top" id="jaX-oF-AZM"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="1WG-fc-UgG"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="VYa-dg-QAN"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="b4h-ab-gGa"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="cy7-8b-uf3"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ukx-KQ-esS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1725.9541984732823" y="-720.42253521126759"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -137,14 +102,10 @@
                     <navigationItem key="navigationItem" id="l9w-eW-z90">
                         <barButtonItem key="leftBarButtonItem" title="전체 뉴스" id="a6S-Cp-yg0">
                             <connections>
-                                <segue destination="xMl-Bl-zX4" kind="show" id="PgP-5D-8QC"/>
+                                <segue destination="Ruz-hM-iPo" kind="show" id="hvK-5l-5fg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="이슈 히스토리" id="NnF-ng-1k9">
-                            <connections>
-                                <segue destination="9xh-qX-teC" kind="show" id="khz-hV-IXZ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="이슈 히스토리" id="NnF-ng-1k9"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -159,30 +120,61 @@
             </objects>
             <point key="canvasLocation" x="959.5419847328244" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="WD5-Ht-opg">
+        <!--All News Controller-->
+        <scene sceneID="bFf-Ge-k9N">
             <objects>
-                <viewController id="9xh-qX-teC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N2D-k6-b9A">
+                <viewController id="Ruz-hM-iPo" customClass="AllNewsController" customModule="KeyNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="50A-wt-cwj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWE-1E-Ke0">
-                                <rect key="frame" x="175" y="120" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4C-zR-JQI">
+                                <rect key="frame" x="175" y="103" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qw3-l1-GcN">
+                                <rect key="frame" x="0.0" y="132" width="393" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-ws-sgy">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </stackView>
+                                </subviews>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Db8-gN-MX9"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="SWH-dZ-Hmg"/>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3a-um-ssJ">
+                                <rect key="frame" x="0.0" y="192" width="393" height="619"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FZB-0q-q3r">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="619"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </stackView>
+                                </subviews>
+                                <viewLayoutGuide key="contentLayoutGuide" id="DXg-Gh-3Jl"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Ry3-Jn-QXb"/>
+                            </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="D2W-N2-N7i"/>
+                        <viewLayoutGuide key="safeArea" id="hB7-sX-frN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yqW-Jh-SWH"/>
+                    <navigationItem key="navigationItem" id="idQ-yt-w1T"/>
+                    <connections>
+                        <outlet property="categoryNewsScrollView" destination="a3a-um-ssJ" id="8oa-Jo-egC"/>
+                        <outlet property="categoryNewsStackView" destination="FZB-0q-q3r" id="RP7-aK-VJr"/>
+                        <outlet property="categoryScrollView" destination="qw3-l1-GcN" id="NiN-wj-BAp"/>
+                        <outlet property="categoryStackView" destination="7U6-ws-sgy" id="pWp-OI-9BE"/>
+                        <outlet property="testLabel" destination="h4C-zR-JQI" id="QYt-bq-f2K"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RrT-Zd-Qke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GIc-3q-wUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1729" y="4"/>
+            <point key="canvasLocation" x="1788.5496183206105" y="232.3943661971831"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tbf-0n-Xlh">
