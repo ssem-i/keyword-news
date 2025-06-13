@@ -8,6 +8,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var keywordsScrollView: UIScrollView!
     @IBOutlet weak var keywordsStackView: UIStackView!
     
+    @IBOutlet weak var issueLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     var myId: String?
@@ -20,8 +22,13 @@ class ViewController: UIViewController {
         loadAPIKeys()
         setupStackViewConstraints()
         setupKeywordStackViewConstraints()
+        
+        summaryLabel.numberOfLines = 0
+        summaryLabel.lineBreakMode = .byWordWrapping // 단어 단위 줄바꿈 // .byTruncatingTail
+        summaryLabel.backgroundColor = UIColor(hex: "#e6e3ff")
+        
     }
-    
+        
     func loadDate(){
            let formatter = DateFormatter()
            formatter.locale = Locale(identifier: "ko_KR")
@@ -40,13 +47,6 @@ class ViewController: UIViewController {
             //print("id: \(myId ?? "nil"), secret: \(mySecret ?? "nil")")
         }
     }
-
-    struct NewsItem : Decodable {
-        let title: String
-        let link : String
-        let description : String
-    }
-    
     struct NewsResponse: Decodable {
         let items: [NewsItem]
     }
@@ -72,6 +72,8 @@ class ViewController: UIViewController {
             }.resume()
     }
     func setupStackViewConstraints() {
+        
+        
         newsStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             newsStackView.topAnchor.constraint(equalTo: newsScrollView.contentLayoutGuide.topAnchor),
@@ -83,25 +85,27 @@ class ViewController: UIViewController {
     }
     
     func setupKeywordStackViewConstraints(){
+        
+        
         keywordsStackView.translatesAutoresizingMaskIntoConstraints = false
         keywordsStackView.axis = .horizontal
         keywordsStackView.alignment = .center       // 또는 .fill
-        keywordsStackView.distribution = .fill   //.equalSpacing   // 또는 .fillProportionally
+        keywordsStackView.distribution = .equalSpacing // .fill .fillProportionally
         keywordsStackView.spacing = 10
         NSLayoutConstraint.activate([
             keywordsStackView.topAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.topAnchor),
             keywordsStackView.bottomAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.bottomAnchor),
             keywordsStackView.leadingAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.leadingAnchor),
             keywordsStackView.trailingAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.trailingAnchor),
-            
-            
             keywordsStackView.heightAnchor.constraint(equalTo: keywordsScrollView.frameLayoutGuide.heightAnchor)
-            
         ])
+        keywordsScrollView.alwaysBounceHorizontal = true
+        keywordsScrollView.showsHorizontalScrollIndicator = true
+        keywordsScrollView.isScrollEnabled = true
     }
 
     func showNews(_ newsItems: [NewsItem]) {
-        newsStackView.spacing = 15
+        newsStackView.spacing = 10
         
         for item in newsItems {
             let title = UILabel()
@@ -111,19 +115,20 @@ class ViewController: UIViewController {
                 .htmlDecoded
             title.numberOfLines = 1
             title.font = .systemFont(ofSize: 16)
-            title.backgroundColor = .red.withAlphaComponent(0.3)
+            title.backgroundColor = UIColor(hex: "#fcfce1")
             
             let description = UILabel()
             description.text = item.description.htmlDecoded
             description.numberOfLines = 3
             description.font = .systemFont(ofSize: 13)
-            description.backgroundColor = .blue.withAlphaComponent(0.3)
+            description.backgroundColor = UIColor(hex: "#dfdfeb")
+            description.layer.cornerRadius = 10
 
             let container = UIStackView(arrangedSubviews: [title, description])
             container.axis = .vertical
             container.spacing = 5
             container.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            
+            container.backgroundColor = UIColor(hex: "#a9a6ff")
             newsStackView.addArrangedSubview(container)
         }
     }
@@ -141,6 +146,19 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.clearNews()
                 self?.showNews(newsItems)
+                self?.issueLabel.text = "# \(keyword) 이슈 요약"
+                self?.loadSummary(keyword, newsItems)
+            }
+        }
+    }
+    func loadSummary(_ keyword: String, _ newsItems: [NewsItem]) {
+        // 키워드 이슈 요약 표시
+        SummaryService.shared.summarizeNews(word: keyword, articles: newsItems) {
+            [weak self] summary in
+            print("요약결과도착\n")
+            DispatchQueue.main.async {
+                self?.summaryLabel.text = summary
+                print("🟢summary : \(self?.summaryLabel.text ?? "nil")")
             }
         }
     }
@@ -169,6 +187,7 @@ class ViewController: UIViewController {
     }
     
     func addKeywordButton(title: String) {
+        /*
         var config = UIButton.Configuration.filled()
             config.title = title
             config.baseBackgroundColor = .systemBlue
@@ -184,6 +203,21 @@ class ViewController: UIViewController {
             button.addTarget(self, action: #selector(keywordTapped(_:)), for: .touchUpInside)
        
         keywordsStackView.addArrangedSubview(button)
+         */
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(hex: "#7452ff")
+        button.layer.cornerRadius = 8
+        button.contentEdgeInsets = UIEdgeInsets(top: 8, left:12, bottom : 8, right: 12)
+        
+        button.setContentHuggingPriority(.required, for: .horizontal)
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
+
+        // 액션 추가
+        button.addTarget(self, action: #selector(keywordTapped(_:)), for: .touchUpInside)
+
+        keywordsStackView.addArrangedSubview(button)
     }
     
     func addKeyword(_ keyword: String) {
@@ -192,20 +226,6 @@ class ViewController: UIViewController {
 
         keywords.append(keyword)
         addKeywordButton(title: keyword)
-    }
-}
-
-extension String {
-    var htmlDecoded: String {
-        guard let data = self.data(using: .utf8) else { return self }
-        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
-            .documentType: NSAttributedString.DocumentType.html,
-            .characterEncoding: String.Encoding.utf8.rawValue
-        ]
-        if let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) {
-            return attributedString.string
-        }
-        return self
     }
 }
 

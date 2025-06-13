@@ -77,5 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    // 데이터를 추가, 수정, 삭제, 조회하기 위한 context 접근
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
 }
 

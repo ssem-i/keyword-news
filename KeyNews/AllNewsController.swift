@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import CoreData
 class AllNewsController: UIViewController {
 
     @IBOutlet weak var categoryStackView: UIStackView!
@@ -22,11 +22,18 @@ class AllNewsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        loadKeywords()
+        loadButtons()
+        // 초깃값 불러오기
+        NewsService.shared.fetchNews(keyword: "정치") { [weak self] items in
+            DispatchQueue.main.async {
+                self?.showNews(items)
+            }
+        }
+        
       //  categoryStackView.heightAnchor.constraint(equalTo:         categoryScrollView.heightAnchor).isActive = true
     }
     
-    func loadKeywords() {
+    func loadButtons() {
         for c in categories {
             let button = UIButton(type: .system)
             button.setTitle(c, for: .normal)
