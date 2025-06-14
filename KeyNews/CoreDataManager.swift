@@ -10,18 +10,56 @@ import UIKit
 import CoreData
 
 class CoreDataManager {
-    static let shared = CoreDataManager() // 싱글톤
+    static let shared = CoreDataManager()
     
     
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).context
+    lazy var context: NSManagedObjectContext = {
+        return (UIApplication.shared.delegate as! AppDelegate).context
+    }()
+    //let context = (UIApplication.shared.delegate as! AppDelegate).context
+    func saveContext() {
+        let context = self.context
+        if context.hasChanges {
+            do {
+                try context.save()
+                print("Context 저장 완료")
+            } catch {
+                print("Context 저장 실패: \(error)")
+            }
+        }
+    }
+    func addOrUpdateSummary(summary: Summary) {
+        let dateOnly = Calendar.current.startOfDay(for: summary.date)
+        let fetchRequest: NSFetchRequest<SummaryEntity> = SummaryEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@ AND keyword == %@", dateOnly as CVarArg, summary.keyword)
         
-    
+        do {
+            if let existing = try context.fetch(fetchRequest).first {
+                // 이미 존재하면 내용만 업데이트
+                existing.content = summary.content
+                print("!!! 기존 요약 업데이트 완료")
+            } else {
+                // 없으면 새로 추가
+                let newSummary = SummaryEntity(context: context)
+                newSummary.date = dateOnly //summary.date
+                newSummary.keyword = summary.keyword
+                newSummary.content = summary.content
+                print("!!! 새로운 요약 저장 완료")
+            }
+            try context.save()
+        } catch {
+            print("저장/업데이트 실패: \(error)")
+        }
+    }
     
     
     func addSummary(summary : Summary) {
-        let summaryEntity = Summaries(context: context)
-        summaryEntity.date = summary.date
+        
+        let summaryEntity = SummaryEntity(context: context)
+        let dateOnly = Calendar.current.startOfDay(for: summary.date)
+        
+        summaryEntity.date = dateOnly // summary.date
+        summaryEntity.keyword = summary.keyword
         summaryEntity.content = summary.content
         do {
             try context.save()
@@ -34,9 +72,11 @@ class CoreDataManager {
     
     
     func updateSummary(summary : Summary) {
+        let dateOnly = Calendar.current.startOfDay(for: summary.date)
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).context
-        let fetchRequest: NSFetchRequest<Summaries> = Summaries.fetchRequest ()
-        fetchRequest.predicate = NSPredicate(format: "date == %@", summary.date)
+        let fetchRequest: NSFetchRequest<SummaryEntity> = SummaryEntity.fetchRequest ()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", dateOnly as CVarArg)
         do {
             if let summaryEntity = try context.fetch(fetchRequest) .first {
                 summaryEntity.content = summary.content
@@ -52,9 +92,10 @@ class CoreDataManager {
     }
     
     func deleteSummary(summary : Summary) {
+        let dateOnly = Calendar.current.startOfDay(for: summary.date)
         let context = (UIApplication.shared.delegate as! AppDelegate).context
-        let fetchRequest: NSFetchRequest<Summaries> = Summaries.fetchRequest ()
-        fetchRequest.predicate = NSPredicate (format: "date == %@", summary.date)
+        let fetchRequest: NSFetchRequest<SummaryEntity> = SummaryEntity.fetchRequest ()
+        fetchRequest.predicate = NSPredicate (format: "date == %@", dateOnly as CVarArg)
         do {
             let summaries = try context.fetch(fetchRequest)
             for summary in summaries {
@@ -67,14 +108,32 @@ class CoreDataManager {
         }
     }
     
-    func fetchAllSummaries() -> [Summaries] {
+    func fetchAllSummaries() -> [SummaryEntity] {
+        
+        /*
         let context = (UIApplication.shared.delegate as! AppDelegate).context
-        let fetchRequest: NSFetchRequest<Summaries> = Summaries.fetchRequest ()
+        let fetchRequest: NSFetchRequest<SummaryEntity> = SummaryEntity.fetchRequest ()
         do {
             return try context.fetch (fetchRequest)
         } catch {
             print ("조회 실패 \(error)")
             return []
+        }*/
+        
+        // 경고 수정 후 >
+        var results: [SummaryEntity] = []
+        DispatchQueue.main.sync {
+            let context = (UIApplication.shared.delegate as! AppDelegate).context
+            let fetchRequest: NSFetchRequest<SummaryEntity> = SummaryEntity.fetchRequest()
+            do {
+                results = try context.fetch(fetchRequest)
+            } catch {
+                print("조회 실패 \(error)")
+            }
         }
+        return results
     }
+    
+        
+    
 }

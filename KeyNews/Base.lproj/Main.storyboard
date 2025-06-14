@@ -49,7 +49,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDf-6g-WEc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1783.9694656488548" y="-411.26760563380282"/>
+            <point key="canvasLocation" x="1963" y="556"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="oS8-5h-NWD">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="338-BD-buy" customClass="WebViewController" customModule="KeyNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aMC-vF-h0a">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-nn-sfc">
+                                <rect key="frame" x="4" y="42" width="76" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&lt; back"/>
+                                <connections>
+                                    <action selector="dismissTapped:" destination="338-BD-buy" eventType="touchUpInside" id="9j9-WF-qet"/>
+                                </connections>
+                            </button>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K41-Im-rnB">
+                                <rect key="frame" x="9" y="74" width="375" height="778"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gJm-5q-C5e"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="webView" destination="K41-Im-rnB" id="AN6-8A-QR8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="783-ln-jLf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="960" y="-731"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -60,21 +100,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBM-nf-m5X">
-                                <rect key="frame" x="152" y="91" width="88" height="32"/>
+                                <rect key="frame" x="104" y="57" width="184" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="summary content " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7f7-Ci-Ti1">
-                                <rect key="frame" x="0.0" y="138" width="393" height="117"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZWI-Tn-lXt">
+                                <rect key="frame" x="6" y="330" width="387" height="522"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5fK-XS-0fr">
+                                        <rect key="frame" x="23" y="2" width="393" height="524"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.9137254901960784" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="leading" secondItem="MAv-nE-GEE" secondAttribute="leading" id="9Ej-HP-c9n"/>
+                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="top" secondItem="MAv-nE-GEE" secondAttribute="top" id="gww-D5-qhw"/>
+                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="width" secondItem="hN7-Hf-j37" secondAttribute="width" id="gzA-Ar-iRJ"/>
+                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="bottom" secondItem="MAv-nE-GEE" secondAttribute="bottom" constant="516" id="ofI-oM-fZe"/>
+                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="trailing" secondItem="MAv-nE-GEE" secondAttribute="trailing" constant="393" id="yDp-I8-MR9"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="MAv-nE-GEE"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="hN7-Hf-j37"/>
+                            </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xOh-TL-7g5">
-                                <rect key="frame" x="0.0" y="263" width="333" height="59"/>
+                                <rect key="frame" x="9" y="270" width="324" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yD1-Rr-7Je">
@@ -94,43 +146,70 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="lbF-D4-7Mb"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="9hn-Hw-0Nm"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4N-0K-L2e">
-                                <rect key="frame" x="341" y="268" width="52" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4N-0K-L2e">
+                                <rect key="frame" x="349" y="283" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="+"/>
+                                <color key="backgroundColor" red="0.45490196078431372" green="0.38823529411764707" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.45490196078431372" green="0.38823529411764707" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="+"/>
+                                <buttonConfiguration key="configuration" style="filled" title="+">
+                                    <color key="baseBackgroundColor" red="0.45490196078431372" green="0.38823529411764707" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addKeywordButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TXi-wn-PBj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# 이슈 요약" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDR-sQ-t7F">
-                                <rect key="frame" x="0.0" y="91" width="152" height="34"/>
+                                <rect key="frame" x="121" y="89" width="152" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZWI-Tn-lXt">
-                                <rect key="frame" x="0.0" y="330" width="393" height="488"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOJ-Rz-Udb">
+                                <rect key="frame" x="9" y="124" width="374" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5fK-XS-0fr">
-                                        <rect key="frame" x="23" y="2" width="393" height="524"/>
-                                    </stackView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="현재 선택된 키워드가 없습니다. (기본값: 경제)" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-Nj-gbC">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="138"/>
+                                        <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="leading" secondItem="MAv-nE-GEE" secondAttribute="leading" id="9Ej-HP-c9n"/>
-                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="top" secondItem="MAv-nE-GEE" secondAttribute="top" id="gww-D5-qhw"/>
-                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="width" secondItem="hN7-Hf-j37" secondAttribute="width" id="gzA-Ar-iRJ"/>
-                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="bottom" secondItem="MAv-nE-GEE" secondAttribute="bottom" constant="516" id="ofI-oM-fZe"/>
-                                    <constraint firstItem="5fK-XS-0fr" firstAttribute="trailing" secondItem="MAv-nE-GEE" secondAttribute="trailing" constant="393" id="yDp-I8-MR9"/>
+                                    <constraint firstItem="Vdr-Nj-gbC" firstAttribute="trailing" secondItem="SQF-v0-ftr" secondAttribute="trailing" constant="374" id="5je-Z1-SP7"/>
+                                    <constraint firstItem="Vdr-Nj-gbC" firstAttribute="top" secondItem="00y-lN-UbK" secondAttribute="top" id="A4q-ge-NWs"/>
+                                    <constraint firstItem="Vdr-Nj-gbC" firstAttribute="leading" secondItem="SQF-v0-ftr" secondAttribute="leading" id="BJT-Dh-s9j"/>
+                                    <constraint firstItem="Vdr-Nj-gbC" firstAttribute="top" secondItem="SQF-v0-ftr" secondAttribute="top" id="C0d-JH-bCm"/>
+                                    <constraint firstItem="Vdr-Nj-gbC" firstAttribute="leading" secondItem="00y-lN-UbK" secondAttribute="leading" id="eSm-lQ-WlL"/>
+                                    <constraint firstItem="00y-lN-UbK" firstAttribute="trailing" secondItem="Vdr-Nj-gbC" secondAttribute="trailing" id="jcL-IO-CCv"/>
+                                    <constraint firstItem="Vdr-Nj-gbC" firstAttribute="bottom" secondItem="SQF-v0-ftr" secondAttribute="bottom" constant="138" id="pWD-j1-kkP"/>
+                                    <constraint firstItem="00y-lN-UbK" firstAttribute="bottom" secondItem="Vdr-Nj-gbC" secondAttribute="bottom" id="x90-Yf-5GC"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="MAv-nE-GEE"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="hN7-Hf-j37"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="SQF-v0-ftr"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="00y-lN-UbK"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="l9w-eW-z90">
@@ -139,7 +218,7 @@
                                 <segue destination="Ruz-hM-iPo" kind="show" id="hvK-5l-5fg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="이슈 모아보기" id="NnF-ng-1k9">
+                        <barButtonItem key="rightBarButtonItem" title="이슈모아보기" id="NnF-ng-1k9">
                             <connections>
                                 <segue destination="mPi-S1-6Ji" kind="show" id="cmg-TM-6o2"/>
                             </connections>
@@ -153,7 +232,8 @@
                         <outlet property="keywordsStackView" destination="yD1-Rr-7Je" id="Ith-kp-Voo"/>
                         <outlet property="newsScrollView" destination="ZWI-Tn-lXt" id="qXc-fO-CTZ"/>
                         <outlet property="newsStackView" destination="5fK-XS-0fr" id="VzE-Au-9Yb"/>
-                        <outlet property="summaryLabel" destination="7f7-Ci-Ti1" id="AP4-HW-MKS"/>
+                        <outlet property="summaryLabel" destination="Vdr-Nj-gbC" id="3zF-He-hUh"/>
+                        <outlet property="summaryScrollView" destination="ZOJ-Rz-Udb" id="hrg-ql-ooK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -168,15 +248,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4C-zR-JQI">
-                                <rect key="frame" x="175" y="103" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qw3-l1-GcN">
-                                <rect key="frame" x="0.0" y="132" width="393" height="52"/>
+                                <rect key="frame" x="7" y="132" width="386" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-ws-sgy">
@@ -196,6 +269,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="DXg-Gh-3Jl"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Ry3-Jn-QXb"/>
                             </scrollView>
@@ -209,12 +283,11 @@
                         <outlet property="categoryNewsStackView" destination="FZB-0q-q3r" id="RP7-aK-VJr"/>
                         <outlet property="categoryScrollView" destination="qw3-l1-GcN" id="NiN-wj-BAp"/>
                         <outlet property="categoryStackView" destination="7U6-ws-sgy" id="pWp-OI-9BE"/>
-                        <outlet property="testLabel" destination="h4C-zR-JQI" id="QYt-bq-f2K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIc-3q-wUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1788.5496183206105" y="232.3943661971831"/>
+            <point key="canvasLocation" x="1964" y="-426"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tbf-0n-Xlh">
@@ -236,6 +309,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

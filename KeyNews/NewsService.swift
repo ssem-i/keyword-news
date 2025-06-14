@@ -40,7 +40,7 @@ class NewsService {
     
     func fetchNews(keyword: String, completion: @escaping ([NewsItem]) -> Void) {
         let query = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let urlString = "https://openapi.naver.com/v1/search/news.json?query=\(query)&display=5"
+        let urlString = "https://openapi.naver.com/v1/search/news.json?query=\(query)&display=15"
             guard let url = URL(string: urlString) else { return }
 
             var request = URLRequest(url: url)

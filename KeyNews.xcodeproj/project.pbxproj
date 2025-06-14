@@ -6,7 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A64B94092DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B94072DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift */; };
+		A64B940A2DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B94082DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		A64B94072DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A64B94082DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6E698162DF99D8C00371909 /* KeyNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,6 +52,8 @@
 		A6E6980D2DF99D8C00371909 = {
 			isa = PBXGroup;
 			children = (
+				A64B94072DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift */,
+				A64B94082DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift */,
 				A6E698182DF99D8C00371909 /* KeyNews */,
 				A6E698172DF99D8C00371909 /* Products */,
 			);
@@ -132,6 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64B94092DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift in Sources */,
+				A64B940A2DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
