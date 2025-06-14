@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PtP-LC-OIr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PtP-LC-OIr">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,18 +20,16 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2F7-nO-prW">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="749"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2F7-nO-prW">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="690"/>
+                                        <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="2F7-nO-prW" firstAttribute="leading" secondItem="n58-wg-v24" secondAttribute="leading" id="8zH-Nd-1JC"/>
-                                    <constraint firstItem="n58-wg-v24" firstAttribute="trailing" secondItem="2F7-nO-prW" secondAttribute="trailing" id="9Tr-B2-fmv"/>
                                     <constraint firstItem="2F7-nO-prW" firstAttribute="top" secondItem="pr1-Kz-hLm" secondAttribute="top" id="BHZ-r3-C62"/>
-                                    <constraint firstItem="n58-wg-v24" firstAttribute="bottom" secondItem="2F7-nO-prW" secondAttribute="bottom" id="BoO-8Y-Rie"/>
                                     <constraint firstItem="2F7-nO-prW" firstAttribute="leading" secondItem="pr1-Kz-hLm" secondAttribute="leading" id="CWs-tK-BAV"/>
-                                    <constraint firstItem="2F7-nO-prW" firstAttribute="trailing" secondItem="pr1-Kz-hLm" secondAttribute="trailing" constant="393" id="R27-Qh-NHL"/>
-                                    <constraint firstItem="2F7-nO-prW" firstAttribute="top" secondItem="n58-wg-v24" secondAttribute="top" id="c51-OJ-0S2"/>
+                                    <constraint firstItem="2F7-nO-prW" firstAttribute="trailing" secondItem="pr1-Kz-hLm" secondAttribute="trailing" id="R27-Qh-NHL"/>
                                     <constraint firstItem="2F7-nO-prW" firstAttribute="bottom" secondItem="pr1-Kz-hLm" secondAttribute="bottom" constant="749" id="qTm-RR-qHd"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="pr1-Kz-hLm"/>
@@ -39,7 +37,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pbi-dE-6qe"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="지난 이슈 모아보기" id="XoY-vJ-AMc"/>
                     <connections>
@@ -112,9 +110,10 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5fK-XS-0fr">
                                         <rect key="frame" x="23" y="2" width="393" height="524"/>
+                                        <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91764705882352937" green="0.9137254901960784" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="5fK-XS-0fr" firstAttribute="leading" secondItem="MAv-nE-GEE" secondAttribute="leading" id="9Ej-HP-c9n"/>
                                     <constraint firstItem="5fK-XS-0fr" firstAttribute="top" secondItem="MAv-nE-GEE" secondAttribute="top" id="gww-D5-qhw"/>
@@ -204,7 +203,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="10"/>
@@ -269,13 +268,13 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="DXg-Gh-3Jl"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Ry3-Jn-QXb"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hB7-sX-frN"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="뉴스" id="idQ-yt-w1T"/>
                     <connections>
@@ -295,7 +294,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PtP-LC-OIr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bhI-Ph-0tl">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

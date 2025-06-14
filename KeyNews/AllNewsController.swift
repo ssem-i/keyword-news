@@ -89,7 +89,7 @@ class AllNewsController: UIViewController, NewsItemViewDelegate {
     }
     
     func showNews(_ newsItems: [NewsItem]) {
-        //categoryNewsStackView.spacing = 1
+        categoryNewsStackView.spacing = 10
         clearNews()
 
         for item in newsItems {
@@ -101,9 +101,8 @@ class AllNewsController: UIViewController, NewsItemViewDelegate {
             view.isLayoutMarginsRelativeArrangement = true
             // 모서리
             view.layer.cornerRadius = 10
+            view.backgroundColor=UIColor(hex:"#fdfcff")
             view.delegate = self
-            
-            
             categoryNewsStackView.addArrangedSubview(view)
         }
     }

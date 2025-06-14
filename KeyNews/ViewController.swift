@@ -42,7 +42,7 @@ class ViewController: UIViewController, NewsItemViewDelegate {
     }
     func setupSummaryLabel() {
         summaryLabel.font = .boldSystemFont(ofSize: 13)
-        summaryLabel.backgroundColor = UIColor(hex: "#e1dff5")
+        summaryLabel.backgroundColor = UIColor(hex: "#fdfcff")
         summaryLabel.isEditable = false
         summaryLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -127,6 +127,7 @@ class ViewController: UIViewController, NewsItemViewDelegate {
     func showNews(_ newsItems: [NewsItem]) {
         newsStackView.spacing = 10
         for item in newsItems {
+            /*
             let title = UILabel()
             title.text = item.title
                 .replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
@@ -140,7 +141,7 @@ class ViewController: UIViewController, NewsItemViewDelegate {
             description.text = item.description.htmlDecoded
             description.numberOfLines = 3
             description.font = .systemFont(ofSize: 13)
-            description.backgroundColor = UIColor(hex: "#dfdfeb")
+            description.backgroundColor = UIColor(hex: "#000000")
             description.layer.cornerRadius = 10
 
             /*
@@ -154,13 +155,15 @@ class ViewController: UIViewController, NewsItemViewDelegate {
             container.heightAnchor.constraint(equalToConstant: 80).isActive = true
             container.backgroundColor = UIColor(hex: "#a9a6ff")
             */
-            
+            */
             let view = NewsItemView(item: item)
             view.translatesAutoresizingMaskIntoConstraints = false
             view.heightAnchor.constraint(equalToConstant: 150).isActive = true
             // 패딩 추가
-            view.layoutMargins = UIEdgeInsets(top: 3, left: 5, bottom: 0, right: 5)
+            view.layoutMargins = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 5)
             view.isLayoutMarginsRelativeArrangement = true
+            view.layer.cornerRadius = 10
+            view.backgroundColor=UIColor(hex:"#fdfcff")
             view.delegate = self
             newsStackView.addArrangedSubview(view)
         }

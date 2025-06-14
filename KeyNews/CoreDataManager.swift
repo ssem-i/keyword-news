@@ -134,6 +134,29 @@ class CoreDataManager {
         return results
     }
     
+    func fetchHistoryItems() -> [HistoryItem] {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request: NSFetchRequest<SummaryEntity> = SummaryEntity.fetchRequest()  // CoreData Entity 이름
+        let sort = NSSortDescriptor(key: "date", ascending: false) // false는 최신순
+        request.sortDescriptors = [sort]
+        do {
+            let results = try context.fetch(request)
+            // CoreData 객체를 struct로 변환
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy.MM.dd"
+            return results.map { coreDataItem in
+                HistoryItem(
+                    hdate: formatter.string(from: coreDataItem.date ?? Date()),
+                    hkeyword: coreDataItem.keyword ?? "",
+                    hcontent: coreDataItem.content ?? ""
+                )
+            }
+        } catch {
+            print("불러오기 실패: \(error)")
+            return []
+        }
+    }
+
         
     
 }

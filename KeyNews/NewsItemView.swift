@@ -24,15 +24,17 @@ class NewsItemView: UIStackView {
         let titleLabel = UILabel()
         titleLabel.text = item.title.cleanedHTML
         titleLabel.numberOfLines = 1
+        titleLabel.layer.cornerRadius = 8
         titleLabel.font = .boldSystemFont(ofSize: 17)
         titleLabel.backgroundColor = UIColor(hex: "#cac4ff")
-        
+        //titleLabel.backgroundColor = UIColor(hex: "#000000")
+        titleLabel.clipsToBounds = true
         let descriptionLabel = UILabel()
         descriptionLabel.text = item.description.cleanedHTML
         descriptionLabel.numberOfLines = 3
         descriptionLabel.font = .systemFont(ofSize: 15)
         // //  색상변경
-        descriptionLabel.backgroundColor = UIColor(hex: "e1dff5")
+        descriptionLabel.backgroundColor = UIColor(hex: "fdfcff")
         
         addArrangedSubview(titleLabel)
         addArrangedSubview(descriptionLabel)
