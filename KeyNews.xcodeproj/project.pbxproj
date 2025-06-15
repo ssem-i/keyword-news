@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A64A00C32DFE2B9D0046731A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64A00C22DFE2B9D0046731A /* WebKit.framework */; };
 		A64B94092DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B94072DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift */; };
 		A64B940A2DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B94082DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A64A00C22DFE2B9D0046731A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A64B94072DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A64B94082DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6E698162DF99D8C00371909 /* KeyNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,18 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64A00C32DFE2B9D0046731A /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A64A00C12DFE2B9D0046731A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A64A00C22DFE2B9D0046731A /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A6E6980D2DF99D8C00371909 = {
 			isa = PBXGroup;
 			children = (
 				A64B94072DFDCAF20070CCA4 /* SummaryEntity+CoreDataClass.swift */,
 				A64B94082DFDCAF20070CCA4 /* SummaryEntity+CoreDataProperties.swift */,
 				A6E698182DF99D8C00371909 /* KeyNews */,
+				A64A00C12DFE2B9D0046731A /* Frameworks */,
 				A6E698172DF99D8C00371909 /* Products */,
 			);
 			sourceTree = "<group>";

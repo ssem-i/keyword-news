@@ -160,7 +160,7 @@ class ViewController: UIViewController, NewsItemViewDelegate {
             view.translatesAutoresizingMaskIntoConstraints = false
             view.heightAnchor.constraint(equalToConstant: 150).isActive = true
             // 패딩 추가
-            view.layoutMargins = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 5)
+            view.layoutMargins = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
             view.isLayoutMarginsRelativeArrangement = true
             view.layer.cornerRadius = 10
             view.backgroundColor=UIColor(hex:"#fdfcff")

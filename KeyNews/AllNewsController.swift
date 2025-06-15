@@ -103,6 +103,7 @@ class AllNewsController: UIViewController, NewsItemViewDelegate {
             view.layer.cornerRadius = 10
             view.backgroundColor=UIColor(hex:"#fdfcff")
             view.delegate = self
+    
             categoryNewsStackView.addArrangedSubview(view)
         }
     }

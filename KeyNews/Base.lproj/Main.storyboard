@@ -105,7 +105,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZWI-Tn-lXt">
-                                <rect key="frame" x="6" y="330" width="387" height="522"/>
+                                <rect key="frame" x="9" y="330" width="387" height="522"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5fK-XS-0fr">
@@ -172,11 +172,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOJ-Rz-Udb">
-                                <rect key="frame" x="9" y="124" width="374" height="138"/>
+                                <rect key="frame" x="14" y="124" width="376" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="현재 선택된 키워드가 없습니다. (기본값: 경제)" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-Nj-gbC">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="138"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="376" height="138"/>
                                         <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -260,7 +260,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="SWH-dZ-Hmg"/>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3a-um-ssJ">
-                                <rect key="frame" x="0.0" y="192" width="393" height="619"/>
+                                <rect key="frame" x="7" y="192" width="393" height="619"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FZB-0q-q3r">
@@ -286,7 +286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIc-3q-wUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1964" y="-426"/>
+            <point key="canvasLocation" x="1962.5954198473282" y="-426.05633802816902"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tbf-0n-Xlh">

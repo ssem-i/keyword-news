@@ -31,19 +31,22 @@ class CView: UIStackView {
         dateLabel.text=item.hdate
         dateLabel.font = .boldSystemFont(ofSize: 13)
         dateLabel.backgroundColor = UIColor(hex: "#cac4ff")
-        
+        dateLabel.layer.cornerRadius = 10
+        dateLabel.clipsToBounds=true
+        dateLabel.textAlignment = .center
         // 키워드
         let keywordLabel = UILabel()
         keywordLabel.numberOfLines = 1
         keywordLabel.text = "# \(item.hkeyword)"
-        keywordLabel.font = .boldSystemFont(ofSize: 13)
+        keywordLabel.font = .boldSystemFont(ofSize: 17)
         keywordLabel.textColor = UIColor(hex: "#4B4BFF")
         
         // 내용
         let contentLabel = UILabel()
         contentLabel.text = item.hcontent
-        contentLabel.font = .systemFont(ofSize: 13)
-        contentLabel.numberOfLines = 5
+        contentLabel.font = .systemFont(ofSize: 15)
+        contentLabel.numberOfLines = 0
+        contentLabel.lineBreakMode = .byWordWrapping
         contentLabel.textColor = UIColor(hex: "#00000")
         contentLabel.backgroundColor = UIColor(hex: "#fdfcff")
         contentLabel.layer.cornerRadius = 10
@@ -57,7 +60,7 @@ class CView: UIStackView {
         addArrangedSubview(keywordLabel)
         addArrangedSubview(contentLabel)
         
-        heightAnchor.constraint(equalToConstant: 150).isActive = true
+        heightAnchor.constraint(equalToConstant: 180).isActive = true
         //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         //self.isUserInteractionEnabled = true
         //self.addGestureRecognizer(tapGesture)

@@ -23,7 +23,7 @@ class HistoryController: UIViewController {
             showContents(items)
     }
     func showContents(_ historyItems: [HistoryItem]) {
-        historyStackView.spacing = 2
+        historyStackView.spacing = 10
         for item in historyItems {
             let view = CView(item: item)
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +33,8 @@ class HistoryController: UIViewController {
             view.setContentCompressionResistancePriority(.required, for: .vertical)
 
             // 패딩 추가
+            view.backgroundColor = UIColor(hex: "fdfcff")
+            
             view.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             view.isLayoutMarginsRelativeArrangement = true
             // 모서리
