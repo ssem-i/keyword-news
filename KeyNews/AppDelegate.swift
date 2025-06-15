@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  KeyNews
-//
-//  Created by ssem on 6/11/25.
-//
-
 import UIKit
 import CoreData
 

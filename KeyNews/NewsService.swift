@@ -1,9 +1,4 @@
-//
-//  NewsService.swift
-//  KeyNews
-//
-//  Created by ssem on 6/12/25.
-//
+
 import UIKit
 import Foundation
 

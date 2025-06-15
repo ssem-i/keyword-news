@@ -1,10 +1,3 @@
-//
-//  NewsItemView.swift
-//  KeyNews
-//
-//  Created by ssem on 6/12/25.
-//
-
 import UIKit
 protocol NewsItemViewDelegate: AnyObject {
     func didTapNews(link: String)

@@ -164,8 +164,8 @@
                                     <action selector="addKeywordButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TXi-wn-PBj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# 이슈 요약" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDR-sQ-t7F">
-                                <rect key="frame" x="121" y="89" width="152" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🔎 이슈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDR-sQ-t7F">
+                                <rect key="frame" x="66" y="91" width="262" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -175,7 +175,7 @@
                                 <rect key="frame" x="14" y="124" width="376" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="현재 선택된 키워드가 없습니다. (기본값: 경제)" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-Nj-gbC">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="현재 선택된 키워드가 없습니다. (기본값: 환율)" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-Nj-gbC">
                                         <rect key="frame" x="0.0" y="0.0" width="376" height="138"/>
                                         <color key="backgroundColor" red="0.90196078431372551" green="0.8901960784313725" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" systemColor="labelColor"/>

@@ -89,7 +89,7 @@ class AllNewsController: UIViewController, NewsItemViewDelegate {
     }
     
     func showNews(_ newsItems: [NewsItem]) {
-        categoryNewsStackView.spacing = 10
+        categoryNewsStackView.spacing = 15
         clearNews()
 
         for item in newsItems {

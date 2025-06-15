@@ -1,7 +1,4 @@
-
 import UIKit
-
-
 
 class HistoryController: UIViewController {
     
@@ -12,6 +9,7 @@ class HistoryController: UIViewController {
         super.viewDidLoad()
         if !UserDefaults.standard.bool(forKey: "didInsertSampleData") {
             // 처음 실행일 때만 실행
+            
             loadSampleData()
             UserDefaults.standard.set(true, forKey: "didInsertSampleData") // 실행됨 표시 저장
         }
@@ -23,7 +21,7 @@ class HistoryController: UIViewController {
             showContents(items)
     }
     func showContents(_ historyItems: [HistoryItem]) {
-        historyStackView.spacing = 10
+        historyStackView.spacing = 15
         for item in historyItems {
             let view = CView(item: item)
             view.translatesAutoresizingMaskIntoConstraints = false

@@ -1,10 +1,3 @@
-//
-//  CoreDataManager.swift
-//  KeyNews
-//
-//  Created by ssem on 6/13/25.
-//
-
 import Foundation
 import UIKit
 import CoreData

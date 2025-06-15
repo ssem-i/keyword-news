@@ -1,9 +1,3 @@
-//
-//  CView.swift
-//  KeyNews
-//
-//  Created by ssem on 6/15/25.
-//
 import UIKit
 import Foundation
 struct HistoryItem: Decodable {
@@ -34,6 +28,7 @@ class CView: UIStackView {
         dateLabel.layer.cornerRadius = 10
         dateLabel.clipsToBounds=true
         dateLabel.textAlignment = .center
+        dateLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true//
         // 키워드
         let keywordLabel = UILabel()
         keywordLabel.numberOfLines = 1
@@ -69,6 +64,4 @@ class CView: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }

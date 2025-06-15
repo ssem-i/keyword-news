@@ -1,10 +1,3 @@
-//
-//  Common.swift
-//  KeyNews
-//
-//  Created by ssem on 6/12/25.
-//
-
 import Foundation
 import UIKit
 

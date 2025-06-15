@@ -26,7 +26,7 @@ class ViewController: UIViewController, NewsItemViewDelegate {
         setupSummaryLabel()
         
         // 초깃값 불러오기
-        NewsService.shared.fetchNews(keyword: "경제") { [weak self] items in
+        NewsService.shared.fetchNews(keyword: "바이오") { [weak self] items in
             DispatchQueue.main.async {
                 self?.showNews(items)
             }
@@ -41,6 +41,7 @@ class ViewController: UIViewController, NewsItemViewDelegate {
         }
     }
     func setupSummaryLabel() {
+        
         summaryLabel.font = .boldSystemFont(ofSize: 13)
         summaryLabel.backgroundColor = UIColor(hex: "#fdfcff")
         summaryLabel.isEditable = false
@@ -56,7 +57,7 @@ class ViewController: UIViewController, NewsItemViewDelegate {
     func loadDate(){
            let formatter = DateFormatter()
            formatter.locale = Locale(identifier: "ko_KR")
-           formatter.dateFormat = "yyyy년 M월 d일 E"
+           formatter.dateFormat = "yyyy년 M월 d일 (E)"
            
            let today = Date()
            dateLabel.text = formatter.string(from: today)
@@ -110,7 +111,7 @@ class ViewController: UIViewController, NewsItemViewDelegate {
         keywordsStackView.translatesAutoresizingMaskIntoConstraints = false
         keywordsStackView.axis = .horizontal
         keywordsStackView.alignment = .center       // 또는 .fill
-        keywordsStackView.distribution = .equalSpacing // .fill .fillProportionally
+        keywordsStackView.distribution = .equalSpacing//.equalSpacing // .fill .fillProportionally
         keywordsStackView.spacing = 10
         NSLayoutConstraint.activate([
             keywordsStackView.topAnchor.constraint(equalTo: keywordsScrollView.contentLayoutGuide.topAnchor),
@@ -125,37 +126,8 @@ class ViewController: UIViewController, NewsItemViewDelegate {
     }
 
     func showNews(_ newsItems: [NewsItem]) {
-        newsStackView.spacing = 10
+        newsStackView.spacing = 15
         for item in newsItems {
-            /*
-            let title = UILabel()
-            title.text = item.title
-                .replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
-                .replacingOccurrences(of: "\n", with: " ")
-                .htmlDecoded
-            title.numberOfLines = 1
-            title.font = .boldSystemFont(ofSize: 16)
-            title.backgroundColor = UIColor(hex: "#cac4ff")
-            
-            let description = UILabel()
-            description.text = item.description.htmlDecoded
-            description.numberOfLines = 3
-            description.font = .systemFont(ofSize: 13)
-            description.backgroundColor = UIColor(hex: "#000000")
-            description.layer.cornerRadius = 10
-
-            /*
-            let container = UIStackView(arrangedSubviews: [title, description])
-            container.axis = .vertical
-            container.spacing = 5
-            // 마진
-            //container.layoutMargins = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-            //container.isLayoutMarginsRelativeArrangement = true
-            
-            container.heightAnchor.constraint(equalToConstant: 80).isActive = true
-            container.backgroundColor = UIColor(hex: "#a9a6ff")
-            */
-            */
             let view = NewsItemView(item: item)
             view.translatesAutoresizingMaskIntoConstraints = false
             view.heightAnchor.constraint(equalToConstant: 150).isActive = true
@@ -182,7 +154,12 @@ class ViewController: UIViewController, NewsItemViewDelegate {
             DispatchQueue.main.async {
                 self?.clearNews()
                 self?.showNews(newsItems)
-                self?.issueLabel.text = "# \(keyword) 이슈 요약"
+                self?.issueLabel.numberOfLines = 1
+                self?.issueLabel.lineBreakMode = .byClipping
+                self?.issueLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+                self?.issueLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+                self?.issueLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
+                self?.issueLabel.text = "🔎 \(keyword)"
                 self?.loadSummary(keyword, newsItems)
             }
         }

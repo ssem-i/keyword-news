@@ -1,9 +1,3 @@
-//
-//  SampleData.swift
-//  KeyNews
-//
-//  Created by ssem on 6/14/25.
-//
 
 import Foundation
 struct Summary {
